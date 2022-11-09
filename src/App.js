@@ -1,5 +1,6 @@
 import { createRef, useEffect, useState } from "react";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+import { toast } from "wc-toast";
 import Loader from "./Loader";
 import "./App.css";
 
@@ -26,6 +27,11 @@ function App() {
 
   const initConvert = async () => {
     try {
+      if (!video) {
+        toast.error("Please choose a file 📂");
+        return;
+      }
+
       if (!ready) await load();
 
       setLoading(true);
@@ -40,13 +46,12 @@ function App() {
       downloadBlob(data);
     } catch (e) {
       setLoading(false);
-      console.warn(e);
+      toast.error("Refresh page. Or choose another media file extension 👀");
+      console.warn(e.message);
     }
   };
 
   const downloadBlob = (blob) => {
-    console.warn("blob, name", blob);
-
     if (window.navigator && window.navigator.msSaveOrOpenBlob)
       return window.navigator.msSaveOrOpenBlob(blob);
 
@@ -73,6 +78,7 @@ function App() {
 
     setOutputFileExt("");
     setLoading(false);
+    toast.success("File converted! 🎉");
   };
 
   const load = async () => {
@@ -88,6 +94,7 @@ function App() {
 
   return (
     <div className={styles.page}>
+      <wc-toast></wc-toast>
       <main className={styles.main}>
         <h1 className={styles.title}>Media File Converter</h1>
         {video ? (

@@ -8725,6 +8725,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
+wc-toast@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/wc-toast/-/wc-toast-1.2.9.tgz#ac751321595e6ba45bef0601b955952403efc699"
+  integrity sha512-cwYwKCLqezlNrMkXFEQg/4VzBuPBMn8nEDWvAOcw5AfutkoWCCa28li9tpcM9s/ITRL18lVsdeR6HzUQAqFVKA==
+
 web-vitals@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-2.1.4.tgz#76563175a475a5e835264d373704f9dde718290c"
